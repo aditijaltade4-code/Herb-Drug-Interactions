@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Herb-Drug Interaction CDSS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HDI Decision Support System</h1>
+            <p>Directly detect herb-drug interactions from clinical text.</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="prescriptionInput">Paste Prescription / EHR Text:</label>
+                <textarea id="prescriptionInput" placeholder="Ex: Patient is taking Guggul and Amlodipine..."></textarea>
+                <button id="analyzeBtn">Run AI Analysis</button>
+            </div>
+
+            <div id="results" class="results-section">
+                </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
