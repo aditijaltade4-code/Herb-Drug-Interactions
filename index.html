@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,7 +11,6 @@
 <link rel="stylesheet" href="style.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
@@ -26,7 +26,7 @@
 
 <main>
 
-<!-- MANUAL CHECK SECTION -->
+<!-- MANUAL CHECK -->
 
 <section class="card">
 
@@ -34,16 +34,16 @@
 
 <div class="manual-form">
 
-<input type="text" id="herbInput" placeholder="Enter Herb (e.g., Turmeric)">
-<input type="text" id="drugInput" placeholder="Enter Drug (e.g., Warfarin)">
+<input type="text" id="herbInput" placeholder="Enter Herb (e.g., Guggul)">
+<input type="text" id="drugInput" placeholder="Enter Drug (e.g., Amlodipine)">
 
-<button onclick="manualInteractionCheck()">Check Interaction</button>
+<button id="manualCheckBtn">Check Interaction</button>
 
 </div>
 
 </section>
 
-<!-- PRESCRIPTION TEXT ANALYSIS -->
+<!-- TEXT ANALYSIS -->
 
 <section class="card">
 
@@ -51,13 +51,15 @@
 
 <label for="prescriptionInput">Paste Prescription / EHR Text</label>
 
-<textarea id="prescriptionInput" placeholder="Example: Patient is taking Guggul, Ashwagandha, and Amlodipine"></textarea>
+<textarea id="prescriptionInput"
+placeholder="Example: Patient is taking Guggul, Ashwagandha and Amlodipine">
+</textarea>
 
 <button id="analyzeBtn">Run AI Analysis</button>
 
 </section>
 
-<!-- PRESCRIPTION FILE UPLOAD -->
+<!-- FILE UPLOAD -->
 
 <section class="card">
 
@@ -65,17 +67,19 @@
 
 <input type="file" id="prescriptionFile" accept=".csv,.xlsx">
 
-<button onclick="uploadPrescription()">Upload & Analyze</button>
+<button id="uploadBtn">Upload & Analyze</button>
 
 </section>
 
-<!-- RESULTS SECTION -->
+<!-- RESULTS -->
 
 <section class="card">
 
 <h2>Interaction Results</h2>
 
-<div id="results"></div>
+<div id="results">
+<p class="placeholder">Results will appear here after analysis.</p>
+</div>
 
 </section>
 
@@ -91,7 +95,7 @@
 
 <h3>Severity Distribution</h3>
 
-<canvas id="severityChart"></canvas>
+<canvas id="severityChart" height="200"></canvas>
 
 </div>
 
@@ -119,12 +123,16 @@
 
 </div>
 
+<!-- Scripts -->
+
 <script src="app.js"></script>
-
 <script src="uploader.js"></script>
-
 <script src="dashboard.js"></script>
 
-</body>
+<script>
+document.getElementById("manualCheckBtn").addEventListener("click", manualInteractionCheck);
+document.getElementById("uploadBtn").addEventListener("click", uploadPrescription);
+</script>
 
+</body>
 </html>
