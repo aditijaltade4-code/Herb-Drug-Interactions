@@ -1,30 +1,130 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Herb-Drug Interaction CDSS</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Herb-Drug Interaction CDSS</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>HDI Decision Support System</h1>
-            <p>Directly detect herb-drug interactions from clinical text.</p>
-        </header>
 
-        <main>
-            <div class="input-section">
-                <label for="prescriptionInput">Paste Prescription / EHR Text:</label>
-                <textarea id="prescriptionInput" placeholder="Ex: Patient is taking Guggul and Amlodipine..."></textarea>
-                <button id="analyzeBtn">Run AI Analysis</button>
-            </div>
+<div class="container">
 
-            <div id="results" class="results-section">
-                </div>
-        </main>
-    </div>
-    <script src="app.js"></script>
+<header>
+<h1>AI Herb-Drug Interaction Decision Support System</h1>
+<p>Clinical tool for detecting Herb-Drug Interactions and Risk Severity</p>
+</header>
+
+<main>
+
+<!-- MANUAL CHECK SECTION -->
+
+<section class="card">
+
+<h2>Manual Interaction Checker</h2>
+
+<div class="manual-form">
+
+<input type="text" id="herbInput" placeholder="Enter Herb (e.g., Turmeric)">
+<input type="text" id="drugInput" placeholder="Enter Drug (e.g., Warfarin)">
+
+<button onclick="manualInteractionCheck()">Check Interaction</button>
+
+</div>
+
+</section>
+
+<!-- PRESCRIPTION TEXT ANALYSIS -->
+
+<section class="card">
+
+<h2>Prescription Text Analysis</h2>
+
+<label for="prescriptionInput">Paste Prescription / EHR Text</label>
+
+<textarea id="prescriptionInput" placeholder="Example: Patient is taking Guggul, Ashwagandha, and Amlodipine"></textarea>
+
+<button id="analyzeBtn">Run AI Analysis</button>
+
+</section>
+
+<!-- PRESCRIPTION FILE UPLOAD -->
+
+<section class="card">
+
+<h2>Prescription Upload</h2>
+
+<input type="file" id="prescriptionFile" accept=".csv,.xlsx">
+
+<button onclick="uploadPrescription()">Upload & Analyze</button>
+
+</section>
+
+<!-- RESULTS SECTION -->
+
+<section class="card">
+
+<h2>Interaction Results</h2>
+
+<div id="results"></div>
+
+</section>
+
+<!-- DASHBOARD -->
+
+<section class="card dashboard">
+
+<h2>Risk Severity Dashboard</h2>
+
+<div class="dashboard-grid">
+
+<div class="dashboard-card">
+
+<h3>Severity Distribution</h3>
+
+<canvas id="severityChart"></canvas>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>Top Interacting Herbs</h3>
+
+<div id="topHerbs"></div>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>Safety Recommendations</h3>
+
+<div id="recommendations"></div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+<script src="app.js"></script>
+
+<script src="uploader.js"></script>
+
+<script src="dashboard.js"></script>
+
 </body>
+
 </html>
